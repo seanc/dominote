@@ -8,8 +8,6 @@ class UserSchema extends Schema {
       table.increments()
       table.integer('employee_id').notNullable().unique().index()      
       table.string('username', 80).notNullable().unique()
-      table.string('first_name').notNullable()
-      table.string('last_name').notNullable()
       table.string('password', 60).notNullable()
       table.timestamps()
     })

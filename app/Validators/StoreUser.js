@@ -8,8 +8,6 @@ class StoreUser {
   get rules () {
     return {
       employee_id: 'required|unique:users',
-      first_name: 'required',
-      last_name: 'required',
       username: 'required|unique:users',
       password: 'required',
       password_confirm: 'required_if:password|same:password'
