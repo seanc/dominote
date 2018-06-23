@@ -17,10 +17,14 @@ const Route = use('Route')
 
 Route.group(() => {
   Route.get('register', 'UserController.create')
+  Route
+    .post('register', 'Usercontroller.store')
+    .validator(['StoreUser'])
 
   Route.get('login', 'SessionController.create')
+  Route.post('login', 'SessionController.store')
 }).middleware(['guest'])
 
 Route.group(() => {
-
+  Route.get('logout', 'SessionController.delete')
 }).middleware(['auth'])
