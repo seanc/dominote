@@ -26,6 +26,12 @@ class SessionController {
     return response.redirect('/')
   }
 
+  async delete ({ auth, response }) {
+    await auth.logout()
+
+    return response.redirect('/')
+  }
+
 }
 
 module.exports = SessionController
