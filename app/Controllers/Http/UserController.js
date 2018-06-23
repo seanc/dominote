@@ -6,7 +6,9 @@ class UserController {
     return view.render('user.create')
   }
 
-  // TODO: store
+  async store ({ session, request, response }) {
+    const data = request.only(['username', 'email', 'password', 'password_confirm'])
+  }
 
 }
 

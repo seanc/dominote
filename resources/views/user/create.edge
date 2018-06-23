@@ -19,31 +19,45 @@
           <div class="form-row">
             <div class="col-md-6">
               <label for="first_name">First name</label>
-              <input class="form-control {{ hasErrorFor('first_name') ? 'is-invalid' : '' }}" id="first_name" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
+              <input class="form-control {{ hasErrorFor('first_name') ? 'is-invalid' : '' }}" id="first_name" name="first_name" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
               {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('first_name'), hasErrorFor('first_name')) }}
             </div>
             <div class="col-md-6">
               <label for="last_name">Last name</label>
-              <input class="form-control {{ hasErrorFor('last_name') ? 'is-invalid' : '' }}" id="last_name" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
+              <input class="form-control {{ hasErrorFor('last_name') ? 'is-invalid' : '' }}" id="last_name" name="last_name" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
               {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('last_name'), hasErrorFor('last_name')) }}
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control {{ hasErrorFor('username') ? 'is-invalid' : '' }}" id="username" placeholder="Enter a username">
-          {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('username'), hasErrorFor('username')) }}
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control {{ hasErrorFor('username') ? 'is-invalid' : '' }}" id="username" name="username" placeholder="Enter a username">
+                {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('username'), hasErrorFor('username')) }}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="employee_id">Employee Id</label>
+                <input type="number" class="form-control {{ hasErrorFor('employee_id') ? 'is-invalid' : '' }}" id="employee_id" name="employee_id" placeholder="Enter your Domino's employee id">
+                {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('employee_id'), hasErrorFor('employee_id')) }}
+              </div>
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <div class="form-row">
             <div class="col-md-6">
               <label for="password">Password</label>
-              <input class="form-control {{ hasErrorFor('password') ? 'is-invalid' : '' }}" id="password" type="password" placeholder="Password">
+              <input class="form-control {{ hasErrorFor('password') ? 'is-invalid' : '' }}" id="password" name="password" type="password" placeholder="Password">
               {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('password'), hasErrorFor('password')) }}              
             </div>
             <div class="col-md-6">
               <label for="exampleConfirmPassword">Confirm password</label>
-              <input class="form-control {{ hasErrorFor('password_confirm') ? 'is-invalid' : '' }}" id="password_confirm" type="password" placeholder="Confirm password">
+              <input class="form-control {{ hasErrorFor('password_confirm') ? 'is-invalid' : '' }}" id="password_confirm" name="password_confirm" type="password" placeholder="Confirm password">
               {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('password_confirm'), hasErrorFor('password_confirm')) }}              
             </div>
           </div>
