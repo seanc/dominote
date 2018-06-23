@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{{ upperFirst(title) }} - Dominote</title>
+  <title>{{ upperFirst(page) }} - Dominote</title>
   {{ style('vendor/bootstrap/css/bootstrap.min.css') }}
   {{ style('vendor/font-awesome/css/font-awesome.min.css') }}
   {{ style('css/sb-admin.css') }}
@@ -15,7 +15,7 @@
       @!section('content')
     </div>
   @else
-    @!component('components.navbar', { activePage })
+    @!component('components.navbar', { page })
 
     <div class="content-wrapper">
       <div class="container-fluid">
