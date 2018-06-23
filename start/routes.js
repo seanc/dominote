@@ -18,7 +18,7 @@ const Route = use('Route')
 Route.group(() => {
   Route.get('register', 'UserController.create')
   Route
-    .post('register', 'Usercontroller.store')
+    .post('register', 'UserController.store')
     .validator(['StoreUser'])
 
   Route.get('login', 'SessionController.create')

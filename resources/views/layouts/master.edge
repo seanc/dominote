@@ -43,12 +43,16 @@
       </a>
 
       @include('includes.logout-modal')
-
-      {{ script('vendor/jquery/jquery.min.js') }}
-      {{ script('vendor/bootstrap/js/bootstrap.bundle.min.js') }}
-      {{ script('vendor/jquery-easing/jquery.easing.min.js') }}
-      {{ script('js/sb-admin.min.js') }}
     </div>
   @endif
+
+
+  {{ script('vendor/jquery/jquery.min.js') }}
+  {{ script('vendor/bootstrap/js/bootstrap.bundle.min.js') }}
+  {{ script('vendor/jquery-easing/jquery.easing.min.js') }}
+  
+  @loggedIn
+    {{ script('js/sb-admin.min.js') }}
+  @endloggedIn
 </body>
 </html>
