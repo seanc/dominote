@@ -17,4 +17,10 @@ const Route = use('Route')
 
 Route.group(() => {
   Route.get('register', 'UserController.create')
-})
+
+  Route.get('login', 'SessionController.create')
+}).middleware(['guest'])
+
+Route.group(() => {
+
+}).middleware(['auth'])

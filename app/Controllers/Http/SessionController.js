@@ -2,7 +2,11 @@
 
 class SessionController {
 
-  // TODO: create, store, delete
+  // TODO: store, delete
+
+  create ({ view }) {
+    return view.render('session.create')
+  }
 
 }
 
