@@ -7,7 +7,17 @@ class UserController {
   }
 
   async store ({ session, request, response }) {
-    const data = request.only(['username', 'email', 'password', 'password_confirm'])
+    const data = request.only([
+      'employee_id',
+      'first_name',
+      'last_name',
+      'username',
+      'password'
+    ])
+
+    await User.create(data)
+
+    return response.redirect('/')
   }
 
 }
