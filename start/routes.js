@@ -26,5 +26,6 @@ Route.group(() => {
 }).middleware(['guest'])
 
 Route.group(() => {
+  Route.get('/', 'DashboardController.show')
   Route.get('logout', 'SessionController.delete')
 }).middleware(['auth'])

@@ -19,7 +19,9 @@ class UserController {
 
     await User.create(data)
 
-    return response.redirect('/')
+    session.flash({ success: 'Account created' })
+
+    return response.redirect('/login')
   }
 
 }

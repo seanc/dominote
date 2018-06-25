@@ -20,6 +20,13 @@ class StoreUser {
     }
   }
 
+  get messages () {
+    return {
+      required: 'Field {{ field }}  is required',
+      unique: 'Field {{ field }} must be unique'
+    }
+  }
+
   async fails (errorMessages) {
     const { session, response } = this.ctx
 

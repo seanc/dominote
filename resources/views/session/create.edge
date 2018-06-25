@@ -14,6 +14,12 @@
         @endcomponent
       @endif
 
+      @if(flashMessage('success'))
+        @component('components.alert', { type: 'success', dismissible: true })
+          {{ flashMessage('success') }}
+        @endcomponent
+      @endif
+
       <form action="/login" method="POST">
         {{ csrfField() }}
 
