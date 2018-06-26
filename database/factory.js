@@ -44,17 +44,21 @@ Factory.blueprint('App/Models/Customer', faker => {
   }
 })
 
-Factory.blueprint('Apps/Models/Order', (faker, i, data) => {
+Factory.blueprint('App/Models/Order', (faker, i, data) => {
   return {
-    user_id: data.user,
+    driver_id: getRandom(data.users, 1),
     customer_id: getRandom(data.customers, 1),
     items: getRandom(data.items, faker.natural({
       min: 1,
       max: 5
-    })),
+    })).join(','),
     total: faker.natural({
       min: 1500,
       max: 3000
     })
   }
+})
+
+Factory.blueprint('App/Models/StoreItem', (faker, i, data) => {
+  return data.products[i]
 })

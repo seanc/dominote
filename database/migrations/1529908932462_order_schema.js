@@ -3,15 +3,28 @@
 const Schema = use('Schema')
 
 class OrderSchema extends Schema {
-  up () {
-    this.create('orders', (table) => {
-      table.increments()
-      table.integer('user_id').unsigned().references('id').inTable('users')
-      table.integer('customer_id').unsigned().references('id').inTable('customers')
-      table.string('items')
-      table.integer('total')
-      table.timestamps()
-    })
+  async up () {
+    const exists = await this.hasTable('orders')
+
+    if (!exists) {
+      this.create('orders', (table) => {
+        table.increments()
+        table
+          .integer('driver_id')
+          .unsigned()
+          .references('id')
+          .inTable('users')
+          .comment('User = Driver')
+        table
+          .integer('customer_id')
+          .unsigned()
+          .references('id')
+          .inTable('customers')
+        table.string('items')
+        table.integer('total')
+        table.timestamps()
+      })
+    }
   }
 
   down () {

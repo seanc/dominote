@@ -15,7 +15,7 @@ const Factory = use('Factory')
 class CustomerSeeder {
   async run () {
     await Factory
-      .model('Apps/Models/Customer')
+      .model('App/Models/Customer')
       .createMany(150)
   }
 }
