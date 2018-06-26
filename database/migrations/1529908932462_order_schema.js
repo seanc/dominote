@@ -9,6 +9,7 @@ class OrderSchema extends Schema {
       table.integer('user_id').unsigned().references('id').inTable('users')
       table.integer('customer_id').unsigned().references('id').inTable('customers')
       table.string('items')
+      table.integer('total')
       table.timestamps()
     })
   }
