@@ -35,17 +35,18 @@
                 <td>{{ order.driver.employee_id }}</td>
                 <td>
                   <abbr title="{{ order.customer.fullname }})"
+                        tabindex="0" 
                         data-container="body"
                         data-toggle="popover"
                         data-placement="bottom"
-                        data-trigger="hover"
+                        data-trigger="focus"
                         data-html="true"
                         data-target="#popover-customer-content-{{ order.id }}">
                     {{ order.customer.fullname }}
                   </abbr>
 
                   <script type="text/html" id="popover-customer-content-{{ order.id }}">
-                    <li><strong>Phone:</strong> {{ order.customer.phone }}</li>
+                    <li><strong>Phone:</strong> <a href="tel:207-774-1489">(207) 774-1489</a></li>
                   </script>
                 </td>
                 <td>
