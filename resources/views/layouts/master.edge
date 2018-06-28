@@ -24,11 +24,15 @@
         </ol>
       </div>
 
-      <div class="row">
-        <div class="col-12">
-          @!section('content')
+      @if(page === 'orders')
+        @!section('content')
+      @else
+        <div class="row">
+          <div class="col-12">
+            @!section('content')
+          </div>
         </div>
-      </div>
+      @endif
 
       <footer class="sticky-footer">
         <div class="container">
@@ -50,9 +54,12 @@
   {{ script('vendor/jquery/jquery.min.js') }}
   {{ script('vendor/bootstrap/js/bootstrap.bundle.min.js') }}
   {{ script('vendor/jquery-easing/jquery.easing.min.js') }}
+  {{ script('vendor/datatables/jquery.dataTables.js') }}
+  {{ script('vendor/datatables/dataTables.bootstrap4.js') }}
   
   @loggedIn
     {{ script('js/sb-admin.min.js') }}
+    {{ script('js/sb-admin-datatables.min.js') }}
   @endloggedIn
 
   @!section('scripts')

@@ -10,9 +10,7 @@ class OrderController {
       .with('driver')
       .fetch()
 
-    console.log(orders.toJSON()[0])
-
-    return view.render('order.index', { orders: orders.toJSON() })
+    return view.render('order.index', { orders: orders.toJSON().reverse() })
   }
 
   async create () {
