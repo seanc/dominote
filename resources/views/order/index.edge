@@ -24,10 +24,40 @@
             <th>Driver</th>
             <th>Customer</th>
             <th>Items</th>
-            <th>Time</th>
             <th>Address</th>
             <th>Total</th>
+            <th>Time</th>            
           </thead>
+          <tbody>
+            @each(order in orders)
+              <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.driver.fullname }}</td>
+                <td>{{ order.customer.fullname }}</td>
+                <td>
+                  <abbr title="Item List ({{ count(order.items) }})"
+                        data-container="body"
+                        data-toggle="popover"
+                        data-placement="bottom"
+                        data-trigger="hover"
+                        data-html="true"
+                        data-target="#popover-driver-content-{{ order.id }}">
+                    {{ order.items.join(', ') }}
+                  </abbr>
+
+                  <script type="text/html" id="#popover-driver-content-{{ order.id }}">
+                    <strong class="text-center">Driver</strong>
+
+                    <ul>
+                      <li><strong>Name:</strong> {{ order.driver.fullname }}</li>
+                      <li><strong>ID:</strong> {{ order.driver.id }}</li>
+                    </ul>
+                  </script>
+                </td>
+                <td>{{ el('<a href="googleMapsUrl($address)">$address</a>', { order }) }}</td>
+              </tr>
+            @endeach
+          </tbody>
         </table>
       </div>
     </div>
