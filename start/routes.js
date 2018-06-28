@@ -26,7 +26,7 @@ Route.group(() => {
 }).middleware(['guest'])
 
 Route.group(() => {
-  Route.get('/', ({ response }) => response.redirect('order.index'))
+  Route.get('/', ({ response }) => response.redirect('/order'))
   Route
     .resource('order', 'OrderController')
     .only(['index', 'show'])
