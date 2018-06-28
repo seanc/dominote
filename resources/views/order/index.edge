@@ -52,6 +52,8 @@
                   </script>
                 </td>
                 <td>{{ el('<a href="$addressMapsUrl">$address</a>', order.customer) }}</td>
+                <td>{{ antl.formatAmount(order.total / 100, 'usd') }}</td>
+                <td>{{ order.created_at }}</td>
               </tr>
             @endeach
           </tbody>
