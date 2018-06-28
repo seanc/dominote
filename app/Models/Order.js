@@ -7,7 +7,7 @@ class Order extends Model {
   static boot () {
     super.boot()
 
-    this.addHook('afterFetch', 'OrderHook.resolveItemsAndComputeMapsUrl')
+    this.addHook('afterFetch', 'OrderHook.resolveItems')
   }
 
   static castDates (field, value) {

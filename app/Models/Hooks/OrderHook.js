@@ -4,7 +4,7 @@ const OrderHook = exports = module.exports = {}
 
 const StoreItem = use('App/Models/StoreItem')
 
-OrderHook.resolveItemsAndComputeMapsUrl = async (orders) => {
+OrderHook.resolveItems = async (orders) => {
   orders = Array.isArray(orders) ? orders : [orders]
 
   const newOrders = []
