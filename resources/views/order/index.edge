@@ -32,17 +32,17 @@
             @each(order in orders)
               <tr>
                 <td>{{ order.id }}</td>
-                <td>{{ order.driver.fullname }}</td>
+                <td>{{ order.driver.employee_id }}</td>
                 <td>{{ order.customer.fullname }}</td>
                 <td>
-                  <abbr title="Item List ({{ count(order.items) }})"
+                  <abbr title="Item List ({{ order.items.length }})"
                         data-container="body"
                         data-toggle="popover"
                         data-placement="bottom"
                         data-trigger="hover"
                         data-html="true"
                         data-target="#popover-driver-content-{{ order.id }}">
-                    {{ order.items.join(', ') }}
+                    {{ order.items }}
                   </abbr>
 
                   <script type="text/html" id="#popover-driver-content-{{ order.id }}">
@@ -54,7 +54,7 @@
                     </ul>
                   </script>
                 </td>
-                <td>{{ el('<a href="googleMapsUrl($address)">$address</a>', { order }) }}</td>
+                <td>{{ el('<a href="$addressMapsUrl">$address</a>', order.customer) }}</td>
               </tr>
             @endeach
           </tbody>

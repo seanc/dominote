@@ -4,22 +4,22 @@ const OrderHook = exports = module.exports = {}
 
 const StoreItem = use('App/Models/StoreItem')
 
-OrderHook.resolveItems = async (modelInstances) => {
-  modelInstances = Array.isArray(modelInstances) ? modelInstances : [modelInstances]
+OrderHook.resolveItemsAndComputeMapsUrl = async (orders) => {
+  orders = Array.isArray(orders) ? orders : [orders]
 
-  const newModelInstances = []
+  const newOrders = []
 
-  for (let modelInstance of modelInstances) {
-    const itemCodes = modelInstance.items.split(',')
+  for (let order of orders) {
+    const itemCodes = order.items.split(',')
     const items = await StoreItem
       .query()
-      .whereIn('id', itemCodes)
+      .whereIn('code', itemCodes)
       .fetch()
   
-    modelInstance['__meta__']['items'] = items
+    order.__meta__ = { items: items.toJSON() }
 
-    newModelInstances.push(modelInstance)
+    newOrders.push(order)
   }
   
-  return newModelInstances
+  return newOrders
 }

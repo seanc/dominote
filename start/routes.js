@@ -14,12 +14,6 @@
 */
 
 const Route = use('Route')
-const View = use('View')
-
-View.global('googleMapsUrl', address => {
-  const baseDirectionUrl = 'https://www.google.com/maps/dir/?api=1'
-  return `${baseDirectionUrl}&destination=${encodeURI(address)}`
-})
 
 Route.group(() => {
   Route.get('register', 'UserController.create')
@@ -32,6 +26,10 @@ Route.group(() => {
 }).middleware(['guest'])
 
 Route.group(() => {
-  Route.get('/', 'DashboardController.show')
+  Route.get('/', ({ response }) => response.redirect('order.index'))
+  Route
+    .resource('order', 'OrderController')
+    .only(['index', 'show'])
+    
   Route.get('logout', 'SessionController.delete')
 }).middleware(['auth'])
