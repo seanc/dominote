@@ -35,23 +35,20 @@
                 <td>{{ order.driver.employee_id }}</td>
                 <td>{{ order.customer.fullname }}</td>
                 <td>
-                  <abbr title="Item List ({{ order.items.length }})"
+                  <abbr title="Item List ({{ order.__meta__.items.length }})"
                         data-container="body"
                         data-toggle="popover"
                         data-placement="bottom"
                         data-trigger="hover"
                         data-html="true"
                         data-target="#popover-driver-content-{{ order.id }}">
-                    {{ order.items }}
+                    {{ order.items.split(',').join(', ') }}
                   </abbr>
 
-                  <script type="text/html" id="#popover-driver-content-{{ order.id }}">
-                    <strong class="text-center">Driver</strong>
-
-                    <ul>
-                      <li><strong>Name:</strong> {{ order.driver.fullname }}</li>
-                      <li><strong>ID:</strong> {{ order.driver.id }}</li>
-                    </ul>
+                  <script type="text/html" id="popover-driver-content-{{ order.id }}">
+                    @each(item in order.__meta__.items)
+                      <li><strong>{{ item.code }}:</strong> {{ item.name }}</li>
+                    @endeach
                   </script>
                 </td>
                 <td>{{ el('<a href="$addressMapsUrl">$address</a>', order.customer) }}</td>
@@ -62,4 +59,16 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('scripts')
+  <script>
+    $("[data-toggle='popover']").each(function(index, element) {
+        var contentElementId = $(element).data().target;
+        var contentHtml = $(contentElementId).html();
+        $(element).popover({
+            content: contentHtml
+        });
+    });
+  </script>
 @endsection
