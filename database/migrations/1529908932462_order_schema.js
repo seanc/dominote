@@ -9,17 +9,8 @@ class OrderSchema extends Schema {
     if (!exists) {
       this.create('orders', (table) => {
         table.increments()
-        table
-          .integer('driver_id')
-          .unsigned()
-          .references('id')
-          .inTable('users')
-          .comment('User = Driver')
-        table
-          .integer('customer_id')
-          .unsigned()
-          .references('id')
-          .inTable('customers')
+        table.integer('driver_id').unsigned()
+        table.integer('customer_id').unsigned()
         table.string('items')
         table.integer('total')
         table.timestamps()
