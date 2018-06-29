@@ -2,8 +2,6 @@
 
 class SessionController {
 
-  // TODO: delete
-
   create ({ view }) {
     return view.render('session.create')
   }
